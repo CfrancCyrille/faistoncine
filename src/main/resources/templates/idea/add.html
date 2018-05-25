@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-	<head>
+	<head th:replace="fragments/header ::head">
 		<meta charset="ISO-8859-1">
         <title>Add some ideas</title>
         <style>
@@ -68,6 +68,7 @@
                 </table>
             </div>
 			</form>
-		</fieldset>		
+		</fieldset>	
+		<div th:replace="fragments/footer ::footer"/>	
 	</body>
 </html>
