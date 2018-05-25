@@ -19,7 +19,7 @@ public class MusicController {
 	@Autowired
 	MusicRepository musicRepository;
 	
-	@GetMapping()
+	@GetMapping("/music")
 	public String list(Model model) {
 		model.addAttribute("musicList", musicRepository.findAll());
 		model.addAttribute("musicForm", new MusicForm());
