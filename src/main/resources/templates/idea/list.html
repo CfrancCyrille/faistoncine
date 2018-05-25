@@ -3,6 +3,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script src="/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -11,18 +13,22 @@
 			<tr>
 				<th>Name</th>
 				<th>Description</th>
+				<th>Action</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr th:each="idea : ${ideaList}">
 				<td th:text="${idea.name}"></td>
 				<td th:text="${idea.description"></td>
-				<td><a th:href="@{/idea/{id}(id=${idea.id})}">view</a></td>
+				<td>
+					<button type="button" th:href="@{/idea/{id}(id=${idea.id})}">Show</button></br>
+					<button type="button" th:href="@{/idea/delete}" class="btn-link">Delete</button>
+				</td>
 			</tr>	
 		</tbody>
 	</table>
-	<button type="button" class="btn-link">Edit</button>
-	<button type="button" class="btn-link">Delete</button>
+
+	<button type="button" th:href="@{/idea/add}" class="btn-link">Add</button>
 
 </body>
-</html>
+</html> 
