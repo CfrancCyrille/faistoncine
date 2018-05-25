@@ -81,4 +81,13 @@ public class PersonaController {
 	      return "redirect:/persona/list";
 			}
 	}
+			
+	@PostMapping("/persona/del")
+	public String del(@Valid Persona persona,
+			BindingResult result){
+		Persona p = personaRepository.findById(persona.getId()).get();
+		personaRepository.delete(p);
+		return "redirect:/persona/list";
+	}
+	
 }
