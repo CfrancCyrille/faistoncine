@@ -19,7 +19,7 @@ public class UserController {
 		return "user/listUser";
 	}
 
-	@GetMapping("/user/delete/{id}")
+	@GetMapping("/users/delete/{id}")
 	public String delete(Model model, @PathVariable Long id) {
 		User userToDelete = (userRepository.findById(id)).get();
 		userRepository.delete(userToDelete);
