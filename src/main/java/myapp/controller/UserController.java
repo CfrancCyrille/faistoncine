@@ -57,7 +57,7 @@ public class UserController {
 	
 	@GetMapping("/user/{id}")
 	public String userShow(Model model, @PathVariable Long id) {
-			model.addAttribute("user", userRepository.findById(id));
+			model.addAttribute("userForm", userRepository.findById(id));
 			return "user/editUser";
 	}
 	
