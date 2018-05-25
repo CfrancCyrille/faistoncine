@@ -33,25 +33,31 @@ public class IdeaController {
 				@Valid Idea idea,
 				BindingResult result) {
 			if (result.hasErrors()) {
-	            return "scenarii/show";
+	            return "idea/show";
 	        }
 			else {
 	      // Retreive idea ide in repository
 	      Idea ide = (ideaRepository.findById(idea.getId())).get();
-	      // Update scenario s:
+	      // Update Idea ide:
 				ide.setDescription(idea.getDescription());
 				ide.setName(idea.getName());
 	      // Save scenario edited:
 				ideaRepository.save(ide);
 	      // Return to the list of scenarii
-	      return "redirect:/scenarii";
+	      return "redirect:/idea";
 			}
 	}
 	
 	@GetMapping(path= {"idea/delete/{id}"})
 	public String delete( Model model, @PathVariable Long id)	{
 		ideaRepository.deleteById(id);
-		 model.addAttribute("scenario", ideaRepository.findById(id));
+		 model.addAttribute("idea", ideaRepository.findById(id));
+		return "idea/list";
+	}
+	
+	@GetMapping(path= {"idea/{id}"})
+	public String show( Model model, @PathVariable Long id)	{
+		 model.addAttribute("idea", ideaRepository.findById(id));
 		return "idea/list";
 	}
 
