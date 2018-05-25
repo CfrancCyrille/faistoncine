@@ -20,6 +20,7 @@ public class PersonaController {
 	@Autowired
 	PersonaRepository personaRepository;
 
+        
 	@GetMapping("/persona/list")
 	public String list(Model model) {
 		model.addAttribute("personaList", personaRepository.findAll());
@@ -80,7 +81,9 @@ public class PersonaController {
 	      // Return to the list of scenarii
 	      return "redirect:/persona/list";
 			}
+
 	}
+
 			
 	@PostMapping("/persona/del")
 	public String del(@Valid Persona persona,
