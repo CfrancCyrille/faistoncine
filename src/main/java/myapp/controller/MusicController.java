@@ -53,4 +53,24 @@ public class MusicController {
 			}
 	}
 	
+	@PostMapping("/music/add")
+	public String scenariosAdd(
+				@Valid Scenario scenario,
+				BindingResult result) {
+			if (result.hasErrors()) {
+	            return "music/list";
+	        }
+			else {
+	      // Create a new scenario with automatic id generated
+				Scenario s = new Scenario();
+	      // Update scenario s:
+				s.setName(scenario.getName());
+				s.setDescription(scenario.getDescription());
+	      // Save scenario edited:
+				scenarioRepository.save(s);
+		      // Return to the list of scenarii
+		      return "redirect:/music";
+			}
+	}
+	
 }
