@@ -38,7 +38,7 @@ public class IdeaController {
 			else {
 	      // Retreive idea ide in repository
 	      Idea ide = (ideaRepository.findById(idea.getId())).get();
-	      // Update scenario s:
+	      // Update Idea ide:
 				ide.setDescription(idea.getDescription());
 				ide.setName(idea.getName());
 	      // Save scenario edited:
