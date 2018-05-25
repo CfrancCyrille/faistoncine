@@ -91,12 +91,17 @@ public class MusicController {
 		}*/
 	
 	@GetMapping("/music/delete/{id}")
-	public String musicsDelete(@Valid Music music, @PathVariable Long id) {
-		// Retreive music m in repository
-		Music m = (musicRepository.findById(music.getId())).get();
-		// Delete music edited:
-		musicRepository.delete(m);
-		return "redirect:/music";
+	public String musicsDelete(@Valid Music music, @PathVariable Long id, BindingResult result) {
+		if (result.hasErrors()) {
+            return "music/delete";
+        }
+		else {
+			// Retreive music m in repository
+			Music m = (musicRepository.findById(music.getId())).get();
+			// Delete music edited:
+			musicRepository.delete(m);
+			return "redirect:/music";
+		}
 	}
 	
 	
