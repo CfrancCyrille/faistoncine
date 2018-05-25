@@ -1,10 +1,8 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<link rel="stylesheet" href="/css/bootstrap.min.css">
-<script src="/js/bootstrap.min.js"></script>
-</head>
+<head th:replace="fragments/header::head"></head>
 <body>
+	<div th:replace="fragments/menu::navbar"></div>
 	<title>List of musics</title>
 	<div class="container">
 		<div class="page-header" id="banner">
@@ -66,6 +64,7 @@
 				</form>
 			</div>
 		</div>
-	</div>	
+	</div>
+	<div th:replace="fragments/footer::footer"></div>	
 </body>
 </html>
