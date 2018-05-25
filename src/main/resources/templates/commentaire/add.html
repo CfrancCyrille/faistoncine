@@ -40,7 +40,7 @@
                                 <td>
                                 	<form method="POST" th:action="@{/commentaire/delete}">
                                 		<input type="hidden" name="id" th:value="${commentaire.id}"/>
-                                		<input class="btn btn-primary" type="submit" value="X"/>
+                                		<input class="btn btn-danger" type="submit" value="X"/>
                                 	</form>
                                 </td>
                             </tr>
@@ -72,7 +72,7 @@
 						<div class="form-group" th:class="${#fields.hasErrors('comment')}? has-error">
 							<label class="col-lg-3 control-label">Comment</label>
 							<div class="col-lg-9">
-								<input class="form-control" th:field="*{comment}" />
+								<textarea class="form-control" rows="5" th:field="*{comment}"></textarea>
 							</div>
 							<span th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}" th:errorclass="fieldError">Comment error</span>
 						</div>
@@ -80,8 +80,12 @@
 							<label class="col-lg-3 control-label">For</label>
 							<div class="col-lg-9">
 							     <select class="form-control" th:field="*{sur}" id="selectForm">
-                                    <option value="francky">Francky</option>
-                                    <option value="vincent">Vincent</option>
+                                    <option value="Idee">Idee</option>
+                                    <option value="Personna">Personna</option>
+                                    <option value="Decor">Decor</option>
+                                    <option value="Scenarii">Scenarii</option>
+                                    <option value="Scene">Scene</option>
+                                    <option value="Musique">Musique</option>
                                 </select>
 							</div>
 							<span th:if="${#fields.hasErrors('sur')}" th:errors="*{sur}" th:errorclass="fieldError">For error</span>

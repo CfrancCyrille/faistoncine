@@ -19,11 +19,11 @@
 			<form th:action="@{/commentaire/edit}" method="post"
 				enctype="multipart/form-data" th:object="${commentaire}">
 				<fieldset class="form-group">
-					<input hidden="true" th:field="*{id}"/>
+					<input hidden="true" th:field="*{id}" />
 					<div class="form-group">
 						<label class="col-lg-2 control-label">Author</label>
 						<div class="col-lg-6">
-							<input class="form-control" th:field="*{auteur}"/>
+							<input class="form-control" th:field="*{auteur}" />
 						</div>
 					</div>
 					<div class="form-group">
@@ -42,21 +42,20 @@
 						<label class="col-lg-3 control-label">For</label>
 						<div class="col-lg-9">
 							<select class="form-control" th:field="*{sur}">
-								<option value="idee">Idee</option>
-								<option value="personna">Personna</option>
-								<option value="decor">Décor</option>
-								<option value="scenarii">Scenarii</option>
-								<option value="commentaire">Commentaire</option>
-								<option value="scene">Scene</option>
-								<option value="musique">Musique</option>
+								<option value="Idee">Idee</option>
+								<option value="Personna">Personna</option>
+								<option value="Decor">Decor</option>
+								<option value="Scenarii">Scenarii</option>
+								<option value="Scene">Scene</option>
+								<option value="Musique">Musique</option>
 							</select>
 						</div>
 					</div>
 				</fieldset>
 				<input class="btn btn-primary" type="submit" value="Edit"
 					name="button" />
+
 			</form>
-			
 		</div>
 	</div>
 
