@@ -19,7 +19,7 @@ public class MusicController {
 	@Autowired
 	MusicRepository musicRepository;
 	
-	@GetMapping("/music")
+	@GetMapping("/music/list")
 	public String list(Model model) {
 		model.addAttribute("musicList", musicRepository.findAll());
 		model.addAttribute("musicForm", new MusicForm());
@@ -49,7 +49,7 @@ public class MusicController {
 			// Save music edited:
 				musicRepository.save(m);
 			// Return to the list of music
-	      return "redirect:/music";
+	      return "redirect:/music/list";
 			}
 	}
 	
@@ -70,25 +70,9 @@ public class MusicController {
 			// Save music edited:
 				musicRepository.save(m);
 		    // Return to the list of music
-		      return "redirect:/music";
+		      return "redirect:/music/list";
 			}
 	}
-	
-	/*@PostMapping("/music/delete")
-	public String musicsDelete(
-				@Valid Music music,
-				BindingResult result) {
-			if (result.hasErrors()) {
-	            return "music/delete";
-	        }
-			else {
-				// Retreive music m in repository
-				Music m = (musicRepository.findById(music.getId())).get();
-				// Delete music edited:
-				musicRepository.delete(m);
-				return "redirect:/music";
-			}
-		}*/
 	
 	@GetMapping("/music/delete/{id}")
 	public String musicsDelete(@Valid Music music, @PathVariable Long id, BindingResult result) {
@@ -100,7 +84,7 @@ public class MusicController {
 			Music m = (musicRepository.findById(music.getId())).get();
 			// Delete music edited:
 			musicRepository.delete(m);
-			return "redirect:/music";
+			return "redirect:/music/list";
 		}
 	}
 	
