@@ -7,9 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import myapp.form.CommentaireForm;
 import myapp.model.Commentaire;
 import myapp.repository.CommentaireRepository;
 
@@ -19,7 +19,13 @@ public class CommentaireController {
 	@Autowired
 	CommentaireRepository commentaireRepository;
 	
-	@PostMapping("/commentaire/add")
+	@GetMapping("/commentaire")
+	public String show(Model model) {
+			model.addAttribute("commentaireForm", new CommentaireForm());
+			return "commentaire/add";
+	}
+	
+	@PostMapping("/commentaire/creation")
 	public String scenariosAdd(
 				@Valid Commentaire commentaire,
 				BindingResult result) {
