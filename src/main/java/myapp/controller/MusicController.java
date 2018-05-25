@@ -74,7 +74,7 @@ public class MusicController {
 			}
 	}
 	
-	@PostMapping("/music/delete")
+	/*@PostMapping("/music/delete")
 	public String musicsDelete(
 				@Valid Music music,
 				BindingResult result) {
@@ -88,7 +88,16 @@ public class MusicController {
 				musicRepository.delete(m);
 				return "redirect:/music";
 			}
-		}
+		}*/
+	
+	@GetMapping("/music/delete/{id}")
+	public String musicsDelete(@Valid Music music, @PathVariable Long id) {
+		// Retreive music m in repository
+		Music m = (musicRepository.findById(music.getId())).get();
+		// Delete music edited:
+		musicRepository.delete(m);
+		return "redirect:/music";
+	}
 	
 	
 }
