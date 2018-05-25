@@ -19,6 +19,7 @@ public class PersonaController {
 	@Autowired
 	PersonaRepository personaRepository;
 
+        /*
 	@GetMapping("/persona/list")
 	public String list(Model model) {
 		model.addAttribute("personaList", personaRepository.findAll());
@@ -64,5 +65,7 @@ public class PersonaController {
 		      // Return to the list of persona
 		      return "redirect:/persona";
 			}
+
 	}
+*/
 }

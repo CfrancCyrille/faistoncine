@@ -11,7 +11,7 @@ import myapp.repository.ScenarioRepository;
 
 @Controller 
 public class IdeaController {
-	
+	/*
 	@Autowired
 	IdeaRepository ideaRepository;
 	
@@ -26,5 +26,6 @@ public class IdeaController {
 		 model.addAttribute("scenario", ideaRepository.findById(id));
 		return "scenarii/show";
 	}
+*/
 
 }
