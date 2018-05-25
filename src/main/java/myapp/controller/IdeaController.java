@@ -11,9 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import myapp.model.Idea;
-import myapp.model.Scenario;
 import myapp.repository.IdeaRepository;
-import myapp.repository.ScenarioRepository;
+
 
 @Controller 
 public class IdeaController {
@@ -41,7 +40,7 @@ public class IdeaController {
 	      // Update Idea ide:
 				ide.setDescription(idea.getDescription());
 				ide.setName(idea.getName());
-	      // Save scenario edited:
+	      // Save idea edited:
 				ideaRepository.save(ide);
 	      // Return to the list of scenarii
 	      return "redirect:/idea";
