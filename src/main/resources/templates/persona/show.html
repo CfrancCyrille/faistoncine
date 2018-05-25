@@ -16,12 +16,12 @@
 <div class="row">
     <div class="col-lg-8 col-md-7 col-sm-6">
         <h1>Persona</h1>
-        <form th:action="@{/scenarii/edit}"
-            method="post" enctype="multipart/form-data" th:object="${scenario}">
+        <form th:action="@{/persona/edit}"
+            method="post" enctype="multipart/form-data" th:object="${persona}">
             <fieldset class="form-group">
                 <input hidden="true" th:field="*{id}"/>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">Lastnameame</label>
+                    <label class="col-lg-2 control-label">Lastname</label>
                     <div class="col-lg-6">
                         <input class="form-control" th:field="*{lastname}"/>
                     </div>
@@ -45,7 +45,7 @@
                     </div>
                     </div>
             </fieldset>
-            <input class="btn btn-primary" type="submit" value="Edit scenario" name="button" /> 
+            <input class="btn btn-primary" type="submit" value="Edit Persona" name="button" /> 
         </form>
     </div>
 </div>
