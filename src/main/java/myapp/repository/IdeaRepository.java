@@ -6,4 +6,5 @@ import myapp.model.Idea;
 
 public interface IdeaRepository extends PagingAndSortingRepository<Idea,Long>{
 
+	
 }

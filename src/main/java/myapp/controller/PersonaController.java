@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import myapp.form.PersonaForm;
 import myapp.model.Persona;
+import myapp.model.Scenario;
 import myapp.repository.PersonaRepository;
 
 @Controller
@@ -19,7 +20,7 @@ public class PersonaController {
 	@Autowired
 	PersonaRepository personaRepository;
 
-        /*
+        
 	@GetMapping("/persona/list")
 	public String list(Model model) {
 		model.addAttribute("personaList", personaRepository.findAll());
@@ -29,7 +30,7 @@ public class PersonaController {
 	
 	@GetMapping("/persona/{id}")
 	public String show(Model model, @PathVariable Long id) {
-			model.addAttribute("scenario", personaRepository.findById(id));
+			model.addAttribute("persona", personaRepository.findById(id));
 			return "persona/show";
 	}
 	
@@ -39,14 +40,8 @@ public class PersonaController {
 		return "persona/add";
 	}
 	
-	@GetMapping("persona/{id}")
-	public String show(Model model, @PathVariable Long id) {
-		model.addAttribute("persona", personaRepository.findById(id));
-		return "persona/show";
-	}
-	
 	@PostMapping("/persona/add")
-	public String scenariosAdd(
+	public String personaAdd(
 				@Valid Persona persona,
 				BindingResult result) {
 			if (result.hasErrors()) {
@@ -63,9 +58,39 @@ public class PersonaController {
 	      // Save scenario edited:
 				personaRepository.save(p);
 		      // Return to the list of persona
-		      return "redirect:/persona";
+		      return "redirect:/persona/list";
+			}
+	}
+	@PostMapping("/persona/edit")
+	public String edit(
+				@Valid Persona persona,
+				BindingResult result) {
+			if (result.hasErrors()) {
+	            return "persona/show";
+	        }
+			else {
+	      // Retreive scenario s in repository
+	      Persona p = (personaRepository.findById(persona.getId())).get();
+	      // Update scenario s:
+				p.setFirstname(persona.getFirstname());
+				p.setLastname(persona.getLastname());
+				p.setPersonality(persona.getPersonality());
+				p.setGender(persona.getGender());
+	      // Save scenario edited:
+				personaRepository.save(p);
+	      // Return to the list of scenarii
+	      return "redirect:/persona/list";
 			}
 
 	}
-*/
+
+			
+	@PostMapping("/persona/del")
+	public String del(@Valid Persona persona,
+			BindingResult result){
+		Persona p = personaRepository.findById(persona.getId()).get();
+		personaRepository.delete(p);
+		return "redirect:/persona/list";
+	}
+	
 }

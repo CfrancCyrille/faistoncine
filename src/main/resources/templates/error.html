@@ -1,11 +1,8 @@
 <!DOCTYPE html>
-<head>
-<html xmlns:th="http://www.thymeleaf.org">
-<meta charset="utf-8">
-</head>
+<head th:replace="fragments/header :: head"></head>
   <body>
     <h2>Something happened...</h2>
     <p th:text="${message}">Exception message</p>
+	<div th:replace="fragments/footer :: footer"></div>  
   </body>
-
 </html>
