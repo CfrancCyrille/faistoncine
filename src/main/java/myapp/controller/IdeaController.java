@@ -71,7 +71,7 @@ public class IdeaController {
 	@GetMapping(path= {"idea/{id}"})
 	public String show( Model model, @PathVariable Long id)	{
 		 model.addAttribute("idea", ideaRepository.findById(id));
-		return "idea/list";
+		return "idea/show";
 	}
 
 }
