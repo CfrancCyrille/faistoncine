@@ -1,7 +1,6 @@
 package myapp.controller;
 
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +15,7 @@ import myapp.repository.UserRepository;
 
 @Controller
 public class UserController {
-	
+
 	@Autowired
 	UserRepository userRepository;
 	
@@ -60,6 +59,29 @@ public class UserController {
 	public String userShow(Model model, @PathVariable Long id) {
 			model.addAttribute("user", userRepository.findById(id));
 			return "user/editUser";
+	}
+	
+	@PostMapping("/users/edit")
+	public String Useredit(@Valid User user, BindingResult result) {
+		if (result.hasErrors()) {
+			return "user/listUser";
+		} else {
+			User s = (userRepository.findById(user.getId())).get();
+			s.setId(user.getId());
+			s.setFirstname(user.getFirstname());
+			s.setLastname(user.getLastname());
+			s.setUsername(user.getUsername());
+			s.setPassword(user.getPassword());
+			userRepository.save(s);
+			return "redirect:/user";
+		}
+	}
+	
+	@GetMapping("/users/delete/{id}")
+	public String delete(Model model, @PathVariable Long id) {
+		User userToDelete = (userRepository.findById(id)).get();
+		userRepository.delete(userToDelete);
+		return "user/listUser";
 	}
 
 

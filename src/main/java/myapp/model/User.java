@@ -10,56 +10,57 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String firstname;
-    private String lastname;
-    private String username;
-    private String password;
-    
-    
-    public User() {
-		// TODO Auto-generated constructor stub
+	private Long id;
+	private String firstname;
+	private String lastname;
+	private String username;
+	private String password;
+
+	public User() {
 	}
-    
-    public Long getId() {
+
+	public Long getId() {
 		return id;
 	}
-    
-    public void setId(Long id) {
+
+	public User setId(Long id) {
 		this.id = id;
+		return this;
 	}
-    
-    public String getFirstname() {
+
+	public String getFirstname() {
 		return firstname;
 	}
-    
-    public void setFirstname(String firstname) {
+
+	public User setFirstname(String firstname) {
 		this.firstname = firstname;
+		return this;
 	}
-    
-    public String getLastname() {
+
+	public String getLastname() {
 		return lastname;
 	}
-    
-    public void setLastname(String lastname) {
+
+	public User setLastname(String lastname) {
 		this.lastname = lastname;
+		return this;
 	}
-    
-    public String getUsername() {
+
+	public String getUsername() {
 		return username;
 	}
-    
-    public void setUsername(String username) {
+
+	public User setUsername(String username) {
 		this.username = username;
+		return this;
 	}
-    
-    public String getPassword() {
+
+	public String getPassword() {
 		return password;
 	}
-    
-    public void setPassword(String password) {
+
+	public User setPassword(String password) {
 		this.password = password;
+		return this;
 	}
-    
-   
 }
