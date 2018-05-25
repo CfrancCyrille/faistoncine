@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+        <title>Add some ideas</title>
+        <style>
+        fieldset{
+            width: fit-content;
+        }
+        .label {
+            width: auto;
+        }
+        input{
+            min-width: 100%;
+        }
+        .input{
+            min-width: 100%;
+        }
+        .form_button{
+            display: inline-block;
+        }
+        </style>
+	</head>
+	<body>
+		<fieldset>
+			<legend><h2>Add an idea to the list</h2></legend>
+			<form id="addIdea">
+			<table>
+				<tr><td class="label"><label>Name<b style="color: red">*</b> :</label></td><td class="input"><input type="text" placeholder="Enter a name for your idea..."/></td></tr>
+				<tr><td colspan="2" class="label"><label>Description<b style="color: red">*</b> :</label></td></tr>
+				<tr><td colspan="2" class="input"><textarea name="description" form="addIdea" rows="5" cols="80" placeholder="Enter your description here..."></textarea></td></tr>
+                <tr><td><label>Author name :</label></td><td><input type="text" placeholder="Enter your name here"/></td></tr>
+            </table>
+            <div class="form_button">
+                <table>
+                    <tr><td><input type="submit" value="Add"/></td><td><input type="reset" value="Clear"/></td></tr>
+                </table>
+            </div>
+			</form>
+		</fieldset>		
+	</body>
+</html>
