@@ -18,47 +18,47 @@ public class UserController {
 	@Autowired
 	UserRepository userRepository;
 
+	@GetMapping("/user")
+	public String home(Model model) {
+		return "redirect:/user/list";
+	}
+
 	@GetMapping("/user/list")
-	public String userList(Model model) {
+	public String list(Model model) {
 		model.addAttribute("userList", userRepository.findAll());
 		model.addAttribute("userForm", new UserForm());
 		return "user/list";
 	}
 
-	@GetMapping("/user/a")
-	public String userAddGet(Model model) {
-		// model.addAttribute("userList", userRepository.findAll());
+	@GetMapping("/user/new")
+	public String newUser(Model model) {
 		model.addAttribute("userForm", new UserForm());
 		return "user/add";
 	}
 
 	@PostMapping("/user/add")
-	public String userAdd(@Valid User user, BindingResult result) {
+	public String add(@Valid User user, BindingResult result) {
 		if (result.hasErrors()) {
-			return "user/list";
+			return "redirect:/user/list";
 		} else {
-			// Create a new user
 			User u = new User();
-			// Add to user u :
-			u.setFirstname(user.getFirstname());
-			u.setLastname(user.getLastname());
-			u.setUsername(user.getUsername());
-			u.setPassword(user.getPassword());
-			// Save user added:
+			u.setFirstname(user.getFirstname())
+			.setLastname(user.getLastname())
+			.setUsername(user.getUsername())
+			.setPassword(user.getPassword());
 			userRepository.save(u);
-			// Return to the list of user
 			return "redirect:/user/list";
 		}
 	}
 
 	@GetMapping("/user/{id}")
-	public String userShow(Model model, @PathVariable Long id) {
+	public String show(Model model, @PathVariable Long id) {
 		model.addAttribute("userForm", userRepository.findById(id));
 		return "user/edit";
 	}
 
 	@PostMapping("/user/edit")
-	public String userEdit(@Valid User user, BindingResult result) {
+	public String edit(@Valid User user, BindingResult result) {
 		if (result.hasErrors()) {
 			return "user/list";
 		} else {
@@ -73,7 +73,7 @@ public class UserController {
 	}
 
 	@GetMapping("/user/delete/{id}")
-	public String userDelete(Model model, @PathVariable Long id) {
+	public String delete(Model model, @PathVariable Long id) {
 		User userToDelete = (userRepository.findById(id)).get();
 		userRepository.delete(userToDelete);
 		return "redirect:/user/list";
