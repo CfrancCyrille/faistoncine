@@ -25,6 +25,4 @@ public class BaseController {
     public String error() {
         return "error";
     }
-	
-
 }

@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header::head">
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script src="/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</head>
+<body>
+<title>Comments</title>
+    <div class="container">
+        <div class="page-header" id="banner">
+            <div class="row">
+                <div class="col-lg-8 col-md-7 col-sm-6">
+                    <h1>Comments</h1>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                            	<th>Id</th>
+                                <th>Author</th>
+                                <th>Title</th>
+                                <th>Comments</th>
+                                <th>On</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="commentaire : ${commentaireList}">
+                            	<td th:text="${commentaire.id}"></td>
+                                <td th:text="${commentaire.auteur}"></td>
+                                <td th:text="${commentaire.titre}"></td>
+                                <td th:text="${commentaire.comment}"></td>
+                                <td th:text="${commentaire.sur}"></td>
+                                <td><a th:href="@{/commentaire/{id}(id=${commentaire.id})}">view</a></td>
+                                <td>
+                                	<form method="POST" th:action="@{/commentaire/delete}">
+                                		<input type="hidden" name="id" th:value="${commentaire.id}"/>
+                                		<input class="btn btn-danger" type="submit" value="X"/>
+                                	</form>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-7 col-sm-6">
+                <h1>Add a comments</h1>
+				<form th:action="@{/commentaire/creation}"
+					method="post" enctype="multipart/form-data" th:object="${commentaireForm}">
+					<fieldset class="form-group">
+						<div class="form-group" th:class="${#fields.hasErrors('auteur')}? has-error">
+							<label class="col-lg-3 control-label">Author</label>
+							<div class="col-lg-9">
+								<input class="form-control" th:field="*{auteur}" />
+							</div>
+							<span th:if="${#fields.hasErrors('auteur')}" th:errors="*{auteur}" th:errorclass="fieldError">Author error</span>
+						</div>
+						<div class="form-group" th:class="${#fields.hasErrors('titre')}? has-error">
+							<label class="col-lg-3 control-label">Title</label>
+							<div class="col-lg-9">
+								<input class="form-control" th:field="*{titre}" />
+							</div>
+							<span th:if="${#fields.hasErrors('titre')}" th:errors="*{titre}" th:errorclass="fieldError">Title error</span>
+						</div>
+						<div class="form-group" th:class="${#fields.hasErrors('comment')}? has-error">
+							<label class="col-lg-3 control-label">Comment</label>
+							<div class="col-lg-9">
+								<textarea class="form-control" rows="5" th:field="*{comment}"></textarea>
+							</div>
+							<span th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}" th:errorclass="fieldError">Comment error</span>
+						</div>
+						<div class="form-group" th:class="${#fields.hasErrors('sur')}? has-error">
+							<label class="col-lg-3 control-label">For</label>
+							<div class="col-lg-9">
+							     <select class="form-control" th:field="*{sur}" id="selectForm">
+                                    <option value="Idee">Idee</option>
+                                    <option value="Personna">Personna</option>
+                                    <option value="Decor">Decor</option>
+                                    <option value="Scenarii">Scenarii</option>
+                                    <option value="Scene">Scene</option>
+                                    <option value="Musique">Musique</option>
+                                </select>
+							</div>
+							<span th:if="${#fields.hasErrors('sur')}" th:errors="*{sur}" th:errorclass="fieldError">For error</span>
+						</div>
+					</fieldset>
+					<input class="btn btn-primary" type="submit" value="Send" name="button" />
+				</form>
+			</div>
+		</div>
+	</div>	
+</body>
+<div th:replace="fragments/footer::footer"></div>
+</html>

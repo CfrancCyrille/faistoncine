@@ -17,7 +17,7 @@ import myapp.repository.IdeaRepository;
 
 @Controller 
 public class IdeaController {
-	
+	/*
 	@Autowired
 	IdeaRepository ideaRepository;
 	
@@ -83,5 +83,6 @@ public class IdeaController {
 		 model.addAttribute("idea", ideaRepository.findById(id));
 		return "idea/show";
 	}
+*/
 
 }
