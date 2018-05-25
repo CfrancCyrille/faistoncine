@@ -29,7 +29,7 @@ public class CommentaireController {
 	
 	@GetMapping("/commentaire/{id}")
 	public String show(Model model, @PathVariable Long id) {
-			model.addAttribute("comments", commentaireRepository.findById(id));
+			model.addAttribute("commentaire", commentaireRepository.findById(id));
 			return "commentaire/show";
 	}
 	
