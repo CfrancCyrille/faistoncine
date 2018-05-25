@@ -1,6 +1,5 @@
 package myapp.form;
 
-
 public class UserForm {
 
 	private Long id;
@@ -13,39 +12,44 @@ public class UserForm {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public UserForm setId(Long id) {
 		this.id = id;
+		return this;
 	}
 
 	public String getFirstname() {
 		return firstname;
 	}
 
-	public void setFirstname(String firstname) {
+	public UserForm setFirstname(String firstname) {
 		this.firstname = firstname;
+		return this;
 	}
 
 	public String getLastname() {
 		return lastname;
 	}
 
-	public void setLastname(String lastname) {
+	public UserForm setLastname(String lastname) {
 		this.lastname = lastname;
+		return this;
 	}
 
 	public String getUsername() {
 		return username;
 	}
 
-	public void setUsername(String username) {
+	public UserForm setUsername(String username) {
 		this.username = username;
+		return this;
 	}
 
 	public String getPassword() {
 		return password;
 	}
 
-	public void setPassword(String password) {
+	public UserForm setPassword(String password) {
 		this.password = password;
+		return this;
 	}
 }
