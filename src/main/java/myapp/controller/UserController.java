@@ -18,24 +18,24 @@ public class UserController {
 	@Autowired
 	UserRepository userRepository;
 
-	@GetMapping("/user/l")
+	@GetMapping("/user/list")
 	public String userList(Model model) {
 		model.addAttribute("userList", userRepository.findAll());
 		model.addAttribute("userForm", new UserForm());
-		return "user/listUser";
+		return "user/list";
 	}
 
 	@GetMapping("/user/a")
 	public String userAddGet(Model model) {
 		// model.addAttribute("userList", userRepository.findAll());
 		model.addAttribute("userForm", new UserForm());
-		return "user/addUser";
+		return "user/add";
 	}
 
 	@PostMapping("/user/add")
 	public String userAdd(@Valid User user, BindingResult result) {
 		if (result.hasErrors()) {
-			return "user/listUser";
+			return "user/list";
 		} else {
 			// Create a new user
 			User u = new User();
@@ -47,36 +47,35 @@ public class UserController {
 			// Save user added:
 			userRepository.save(u);
 			// Return to the list of user
-			return "redirect:/user";
+			return "redirect:/user/list";
 		}
 	}
 
 	@GetMapping("/user/{id}")
 	public String userShow(Model model, @PathVariable Long id) {
 		model.addAttribute("userForm", userRepository.findById(id));
-		return "user/editUser";
+		return "user/edit";
 	}
 
-	@PostMapping("/users/edit")
-	public String Useredit(@Valid User user, BindingResult result) {
+	@PostMapping("/user/edit")
+	public String userEdit(@Valid User user, BindingResult result) {
 		if (result.hasErrors()) {
-			return "user/listUser";
+			return "user/list";
 		} else {
-			User s = (userRepository.findById(user.getId())).get();
-			s.setId(user.getId());
-			s.setFirstname(user.getFirstname());
-			s.setLastname(user.getLastname());
-			s.setUsername(user.getUsername());
-			s.setPassword(user.getPassword());
-			userRepository.save(s);
-			return "redirect:/user";
+			User u = (userRepository.findById(user.getId())).get();
+			u.setFirstname(user.getFirstname());
+			u.setLastname(user.getLastname());
+			u.setUsername(user.getUsername());
+			u.setPassword(user.getPassword());
+			userRepository.save(u);
+			return "redirect:/user/list";
 		}
 	}
 
-	@GetMapping("/users/delete/{id}")
-	public String delete(Model model, @PathVariable Long id) {
+	@GetMapping("/user/delete/{id}")
+	public String userDelete(Model model, @PathVariable Long id) {
 		User userToDelete = (userRepository.findById(id)).get();
 		userRepository.delete(userToDelete);
-		return "redirect:/user";
+		return "redirect:/user/list";
 	}
 }

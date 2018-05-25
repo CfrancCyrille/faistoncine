@@ -1,17 +1,18 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html>
 <head>
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <script src="/js/bootstrap.min.js"></script>
-<title>Add user</title>
+<title>Edit user</title>
 </head>
 <body>
 	<div class="row">
 		<div class="col-lg-6 col-md-7 col-sm-6">
-			<h1>Add a user</h1>
-			<form th:action="@{/user/add}" method="post"
+			<h1>Edit a user</h1>
+			<form th:action="@{/user/edit}" method="post"
 				enctype="multipart/form-data" th:object="${userForm}">
 				<fieldset class="form-group">
+					<input hidden="true" th:field="*{id}" />
 					<div class="form-group"
 						th:class="${#fields.hasErrors('firstname')}? has-error">
 						<label class="col-lg-3 control-label">Firstname</label>
@@ -49,14 +50,14 @@
 						th:class="${#fields.hasErrors('password')}? has-error">
 						<label class="col-lg-3 control-label">Password</label>
 						<div class="col-lg-9">
-							<input class="form-control" th:field="*{password}" />
+							<input type="password" class="form-control" th:field="*{password}" />
 						</div>
 						<span th:if="${#fields.hasErrors('password')}"
 							th:errors="*{password}" th:errorclass="fieldError">Password
 							error</span>
 					</div>
 				</fieldset>
-				<input class="btn btn-primary" type="submit" value="Create User"
+				<input class="btn btn-primary" type="submit" value="Edit User"
 					name="button" />
 			</form>
 		</div>
