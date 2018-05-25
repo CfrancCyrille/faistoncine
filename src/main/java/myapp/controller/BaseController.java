@@ -26,8 +26,4 @@ public class BaseController {
         return "error";
     }
 	
-	@GetMapping("/persona") 
-	public String persona() {
-		return "persona";
-	}
 }
