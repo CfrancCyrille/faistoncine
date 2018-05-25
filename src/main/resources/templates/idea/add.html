@@ -56,12 +56,11 @@
 	<body>
 		<fieldset>
 			<legend><h2>Add an idea to the list</h2></legend>
-			<form id="addIdea" action="th:href">
+			<form id="addIdea" th:action="@{/idea/add}" method="post" enctype="multipart/form-data">
 			<table>
 				<tr><td class="label"><label>Name<b style="color: red">*</b> :</label></td><td class="input"><input type="text" placeholder="Enter a name for your idea..."/></td></tr>
 				<tr><td colspan="2" class="label"><label>Description<b style="color: red">*</b> :</label></td></tr>
 				<tr><td colspan="2"><textarea name="description" form="addIdea" rows="5" cols="80" placeholder="Enter your description here..."></textarea></td></tr>
-                <tr><td class="label"><label>Author name :</label></td><td><input type="text" placeholder="Enter your name here... (optional)"/></td></tr>
             </table>
             <div class="form_button"> 
                 <table>

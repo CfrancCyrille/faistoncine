@@ -55,6 +55,20 @@ public class IdeaController {
 		return "idea/list";
 	}
 	
+	@PostMapping(path= {"idea/add"})
+	public String add(@Valid Idea idea, BindingResult result) {
+		if (result.hasErrors()) {
+			return "idea/list";
+		}
+		else {
+			Idea i = new Idea();
+			i.setName(idea.getName());
+			i.setDescription(idea.getDescription());
+			ideaRepository.save(i);
+			return "redirect:/idea";
+		}
+	}
+	
 	@GetMapping(path= {"idea/{id}"})
 	public String show( Model model, @PathVariable Long id)	{
 		 model.addAttribute("idea", ideaRepository.findById(id));
