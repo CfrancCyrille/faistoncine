@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-	<head>
+	<head th:replace="fragments/header ::head">
 		<meta charset="ISO-8859-1">
         <title>Add some ideas</title>
         <style>
@@ -56,7 +56,7 @@
 	<body>
 		<fieldset>
 			<legend><h2>Add an idea to the list</h2></legend>
-			<form id="addIdea" th:action="@{/idea/add}" method="post" enctype="multipart/form-data">
+			<form id="addIdea" th:action="@{/idea/save}" method="post" enctype="multipart/form-data">
 			<table>
 				<tr><td class="label"><label>Name<b style="color: red">*</b> :</label></td><td class="input"><input type="text" placeholder="Enter a name for your idea..."/></td></tr>
 				<tr><td colspan="2" class="label"><label>Description<b style="color: red">*</b> :</label></td></tr>
@@ -68,6 +68,7 @@
                 </table>
             </div>
 			</form>
-		</fieldset>		
+		</fieldset>	
+		<div th:replace="fragments/footer ::footer"/>	
 	</body>
 </html>

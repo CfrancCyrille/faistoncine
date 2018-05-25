@@ -21,7 +21,6 @@ public class ScenariiController {
 	ScenarioRepository scenarioRepository;
 	
 	@GetMapping("/scenarii")
-
 	public String list(Model model) {
 		model.addAttribute("scenarioList", scenarioRepository.findAll());
 		model.addAttribute("scenarioForm", new ScenarioForm());
