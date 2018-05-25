@@ -44,10 +44,10 @@ public class MusicController {
 	      
 	      Music m = (musicRepository.findById(music.getId())).get();
 	      
-				m.setDescription(music.getDescription());
-				m.setName(music.getName());
-	      
-				musicRepository.save(s);
+				m.setTitle(music.getTitle());
+				m.setAuthor(music.getAuthor());
+				m.setInterpreter(music.getInterpreter());
+				musicRepository.save(m);
 	      
 	      return "redirect:/music";
 			}
@@ -62,12 +62,13 @@ public class MusicController {
 	        }
 			else {
 	      
-				Music s = new Music();
+				Music m = new Music();
 	      
-				s.setName(music.getName());
-				s.setDescription(music.getDescription());
+				m.setTitle(music.getTitle());
+				m.setAuthor(music.getAuthor());
+				m.setInterpreter(music.getInterpreter());
 	      
-				musicRepository.save(s);
+				musicRepository.save(m);
 		      // Return to the list of scenarii
 		      return "redirect:/music";
 			}
