@@ -3,6 +3,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script src="/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -19,7 +21,7 @@
 				<td th:text="${idea.name}"></td>
 				<td th:text="${idea.description"></td>
 				<td>
-					<a th:href="@{/idea/{id}(id=${idea.id})}">Show</a>
+					<button type="button" th:href="@{/idea/{id}(id=${idea.id})}">Show</button></br>
 					<button type="button" th:href="@{/idea/delete}" class="btn-link">Delete</button>
 				</td>
 			</tr>	
