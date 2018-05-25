@@ -21,10 +21,11 @@ public class IdeaController {
 	 	return "idea/list";
 	 }
 	
-	@GetMapping(path= {"scenarii/{id}"})
-	public String show( Model model, @PathVariable Long id)	{
+	@GetMapping(path= {"idea/delete/{id}"})
+	public String delete( Model model, @PathVariable Long id)	{
+		ideaRepository.deleteById(id);
 		 model.addAttribute("scenario", ideaRepository.findById(id));
-		return "scenarii/show";
+		return "idea/list";
 	}
 
 }
