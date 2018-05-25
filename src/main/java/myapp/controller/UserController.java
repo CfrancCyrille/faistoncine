@@ -14,7 +14,7 @@ public class UserController {
 	
 	@GetMapping("/users")
 	public String show(Model model, @PathVariable Long id) {
-			model.addAttribute("users", userRepository);
+			model.addAttribute("users", userRepository.findAll());
 			return "user/listUser";
 	}
 	
