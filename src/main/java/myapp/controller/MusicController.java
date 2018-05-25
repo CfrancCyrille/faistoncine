@@ -11,63 +11,63 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import myapp.form.ScenarioForm;
-import myapp.model.Scenario;
-import myapp.repository.ScenarioRepository;
+import myapp.model.Music;
+import myapp.repository.MusicRepository;
 
 @Controller
 public class MusicController {
 
 	@Autowired
-	ScenarioRepository scenarioRepository;
+	MusicRepository musicRepository;
 	
 	@GetMapping()
 	public String list(Model model) {
-		model.addAttribute("musicList", scenarioRepository.findAll());
+		model.addAttribute("musicList", musicRepository.findAll());
 		model.addAttribute("musicForm", new ScenarioForm());
 		return "music/list";
 	}
 	
 	@GetMapping("/music/{id}")
 	public String show(Model model, @PathVariable Long id) {
-			model.addAttribute("music", scenarioRepository.findById(id));
+			model.addAttribute("music", musicRepository.findById(id));
 			return "music/show";
 	}
 	
 	@PostMapping("/music/edit")
 	public String edit(
-				@Valid Scenario scenario,
+				@Valid Music music,
 				BindingResult result) {
 			if (result.hasErrors()) {
 	            return "music/show";
 	        }
 			else {
-	      // Retreive scenario s in repository
-	      Scenario s = (scenarioRepository.findById(scenario.getId())).get();
-	      // Update scenario s:
-				s.setDescription(scenario.getDescription());
-				s.setName(scenario.getName());
-	      // Save scenario edited:
-				scenarioRepository.save(s);
-	      // Return to the list of music
+	      
+	      Music m = (musicRepository.findById(music.getId())).get();
+	      
+				m.setDescription(music.getDescription());
+				m.setName(music.getName());
+	      
+				musicRepository.save(s);
+	      
 	      return "redirect:/music";
 			}
 	}
 	
 	@PostMapping("/music/add")
 	public String scenariosAdd(
-				@Valid Scenario scenario,
+				@Valid Music music,
 				BindingResult result) {
 			if (result.hasErrors()) {
 	            return "music/list";
 	        }
 			else {
-	      // Create a new scenario with automatic id generated
-				Scenario s = new Scenario();
-	      // Update scenario s:
-				s.setName(scenario.getName());
-				s.setDescription(scenario.getDescription());
-	      // Save scenario edited:
-				scenarioRepository.save(s);
+	      
+				Music s = new Music();
+	      
+				s.setName(music.getName());
+				s.setDescription(music.getDescription());
+	      
+				musicRepository.save(s);
 		      // Return to the list of scenarii
 		      return "redirect:/music";
 			}
