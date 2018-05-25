@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import myapp.form.IdeaForm;
 import myapp.model.Idea;
 import myapp.repository.IdeaRepository;
 
@@ -20,9 +21,10 @@ public class IdeaController {
 	@Autowired
 	IdeaRepository ideaRepository;
 	
-	@GetMapping("idea/list")
+	@GetMapping("/idea/list")
 	 public String list(Model model) {
 	 	model.addAttribute("ideaList", ideaRepository.findAll());
+		model.addAttribute("ideaForm", new IdeaForm());
 	 	return "idea/list";
 	 }
 	
@@ -43,18 +45,26 @@ public class IdeaController {
 	      // Save idea edited:
 				ideaRepository.save(ide);
 	      // Return to the list of scenarii
-	      return "redirect:/idea";
+	      return "redirect:/idea/list";
 			}
 	}
 	
-	@GetMapping(path= {"idea/delete/{id}"})
+	@GetMapping(path= {"/idea/delete/{id}"})
 	public String delete( Model model, @PathVariable Long id)	{
 		ideaRepository.deleteById(id);
 		 model.addAttribute("idea", ideaRepository.findById(id));
 		return "idea/list";
 	}
 	
-	@PostMapping(path= {"idea/add"})
+	
+	@GetMapping(path="/idea/add")
+	public String newIdeaForm(Model model) {
+		model.addAttribute("ideaForm", new IdeaForm());
+		return "idea/add";
+	}
+	
+	
+	@PostMapping(path= {"/idea/save"})
 	public String add(@Valid Idea idea, BindingResult result) {
 		if (result.hasErrors()) {
 			return "idea/list";
@@ -68,7 +78,7 @@ public class IdeaController {
 		}
 	}
 	
-	@GetMapping(path= {"idea/{id}"})
+	@GetMapping(path= {"/idea/{id}"})
 	public String show( Model model, @PathVariable Long id)	{
 		 model.addAttribute("idea", ideaRepository.findById(id));
 		return "idea/show";
