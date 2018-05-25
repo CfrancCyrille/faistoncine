@@ -20,7 +20,7 @@ public class ActorController {
     @Autowired
     ActorRepository actorRepository;
 
-    @GetMapping()
+    @GetMapping("/actor")
     public String list(Model model) {
         model.addAttribute("actorList", actorRepository.findAll());
         model.addAttribute("actorForm", new ScenarioForm());
