@@ -24,7 +24,9 @@
 								<td th:text="${music.title}"></td>
 								<td th:text="${music.author}"></td>
 								<td th:text="${music.interpreter}"></td>
-								<td><a th:href="@{/music/{id}(id=${music.id})}">view</a>
+								<td>
+								<a th:href="@{/music/{id}(id=${music.id})}">view</a>
+								<a th:href="@{/music/delete/(id=${music.id})}">delete</a>
 								</td>
 							</tr>
 						</tbody>
