@@ -1,19 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-	crossorigin="anonymous"></script>
-<title>Editing comment</title>
-</head>
+<head th:replace="fragments/header::head"></head>
 <body>
-	<div class="row">
+	<div class="container">
 		<div class="col-lg-8 col-md-7 col-sm-6">
 			<h1>Comment</h1>
 			<form th:action="@{/commentaire/edit}" method="post"
@@ -39,7 +28,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-lg-3 control-label">For</label>
+						<label class="col-lg-3 control-label">Subject</label>
 						<div class="col-lg-9">
 							<select class="form-control" th:field="*{sur}">
 								<option value="Idee">Idee</option>
@@ -58,6 +47,6 @@
 			</form>
 		</div>
 	</div>
-
+	<div th:replace="fragments/footer::footer"></div>
 </body>
 </html>
