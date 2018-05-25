@@ -13,8 +13,8 @@ public class Commentaire {
     private Long id;
     private String auteur;
     private String titre;
-    private String commentaire;
     private String sur;
+    private String comment;
     
     //#region Getter & Setter...
 	public Long getId() {
@@ -35,18 +35,16 @@ public class Commentaire {
 	public void setTitre(String titre) {
 		this.titre = titre;
 	}
-	public String getCommentaire() {
-		return commentaire;
-	}
-	public void setCommentaire(String commentaire) {
-		this.commentaire = commentaire;
-	}
 	public String getSur() {
 		return sur;
 	}
 	public void setSur(String sur) {
 		this.sur = sur;
 	}
-	//#endregion getter and setter
-    
+	public String getComment() {
+		return comment;
+	}
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
 }

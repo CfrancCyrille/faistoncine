@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import myapp.form.CommentaireForm;
 import myapp.model.Commentaire;
+import myapp.model.Scenario;
 import myapp.repository.CommentaireRepository;
 
 @Controller
@@ -33,6 +34,15 @@ public class CommentaireController {
 			return "commentaire/show";
 	}
 	
+	@PostMapping("/commentaire/delete")
+	public String delete(Long id) {
+	      // Retreive scenario s in repository
+	      Commentaire c = (commentaireRepository.findById(id)).get();
+		  commentaireRepository.delete(c);
+	      // Return to the list of comments
+	      return "redirect:/commentaire";
+	}
+	
 	@PostMapping("/commentaire/creation")
 	public String scenariosAdd(
 				@Valid Commentaire commentaire,
@@ -46,8 +56,8 @@ public class CommentaireController {
 	      // Update scenario s:
 				c.setAuteur(commentaire.getAuteur());
 				c.setTitre(commentaire.getTitre());
-				c.setCommentaire(commentaire.getCommentaire());
 				c.setSur(commentaire.getSur());
+				c.setComment(commentaire.getComment());
 	      // Save scenario edited:
 				commentaireRepository.save(c);
 		      // Return to the list of commentary
