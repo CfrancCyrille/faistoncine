@@ -13,15 +13,16 @@ import myapp.model.User;
 import myapp.repository.UserRepository;
 
 public class UserController {
-	
+
 	@Autowired
 	UserRepository userRepository;
-	
+
 	@GetMapping("/users")
-	public String show(Model model, @PathVariable Long id) {
-			model.addAttribute("users", userRepository.findAll());
-			return "user/listUser";
+	public String show(Model model) {
+		model.addAttribute("users", userRepository.findAll());
+		return "user/listUser";
 	}
+<<<<<<< HEAD
 	
 	@PostMapping("/users/edit")
 	public String Useredit(
@@ -40,5 +41,13 @@ public class UserController {
 				userRepository.save(s);
 	      return "redirect:/users";
 			}
+=======
+
+	@GetMapping("/users/delete/{id}")
+	public String delete(Model model, @PathVariable Long id) {
+		User userToDelete = (userRepository.findById(id)).get();
+		userRepository.delete(userToDelete);
+		return "user/listUser";
+>>>>>>> branch 'dev' of https://github.com/AdrienBelmas/faistoncine.git
 	}
 }
