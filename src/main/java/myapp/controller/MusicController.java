@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import myapp.form.ScenarioForm;
+import myapp.form.MusicForm;
 import myapp.model.Music;
 import myapp.repository.MusicRepository;
 
@@ -23,7 +23,7 @@ public class MusicController {
 	@GetMapping()
 	public String list(Model model) {
 		model.addAttribute("musicList", musicRepository.findAll());
-		model.addAttribute("musicForm", new ScenarioForm());
+		model.addAttribute("musicForm", new MusicForm());
 		return "music/list";
 	}
 	
@@ -54,7 +54,7 @@ public class MusicController {
 	}
 	
 	@PostMapping("/music/add")
-	public String scenariosAdd(
+	public String musicsAdd(
 				@Valid Music music,
 				BindingResult result) {
 			if (result.hasErrors()) {
@@ -69,7 +69,7 @@ public class MusicController {
 				m.setInterpreter(music.getInterpreter());
 	      
 				musicRepository.save(m);
-		      // Return to the list of scenarii
+		      // Return to the list of music
 		      return "redirect:/music";
 			}
 	}
