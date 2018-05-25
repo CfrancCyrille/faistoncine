@@ -41,12 +41,12 @@ public class ActorController {
             return "actor/show";
         } else {
             // Retreive scenario s in repository
-            Actor s = (actorRepository.findById(actor.getIdActor())).get();
+            Actor s = (actorRepository.findById(actor.getId())).get();
             // Update scenario s:
-            s.setActorName(actor.getActorName());
-            s.setActorSurname(actor.getActorSurname());
+            s.setName(actor.getName());
+            s.setSurname(actor.getSurname());
             s.setActorCountry(actor.getActorCountry());
-            s.setActorAge(actor.getActorAge());
+            s.setAge(actor.getAge());
             // Save scenario edited:
 // Save scenario edited:
             actorRepository.save(s);
@@ -65,10 +65,10 @@ public class ActorController {
             // Create a new scenario with automatic id generated
             Actor s = new Actor();
             // Update scenario s:
-            s.setActorName(actor.getActorName());
-            s.setActorSurname(actor.getActorSurname());
+            s.setName(actor.getName());
+            s.setSurname(actor.getSurname());
             s.setActorCountry(actor.getActorCountry());
-            s.setActorAge(actor.getActorAge());
+            s.setAge(actor.getAge());
             // Save scenario edited:
             actorRepository.save(s);
             // Return to the list of scenarii

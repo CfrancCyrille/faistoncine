@@ -7,6 +7,8 @@ package myapp.model;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -17,45 +19,46 @@ import javax.persistence.Id;
 public class Actor implements Serializable {
 
     @Id
-    long idActor;
-    String actorName; 
-    String actorSurname;
-    int actorAge; 
-    String actorCountry; 
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    long id;
+    String name;
+    String surname;
+    int age;
+    String actorCountry;
 
     public Actor() {
     }
-    
-     public long getIdActor() {
-        return idActor;
+
+    public long getId() {
+        return id;
     }
 
-    public void setIdActor(long idActor) {
-        this.idActor = idActor;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public String getActorName() {
-        return actorName;
+    public String getName() {
+        return name;
     }
 
-    public void setActorName(String actorName) {
-        this.actorName = actorName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getActorSurname() {
-        return actorSurname;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setActorSurname(String actorSurname) {
-        this.actorSurname = actorSurname;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
-    public int getActorAge() {
-        return actorAge;
+    public int getAge() {
+        return age;
     }
 
-    public void setActorAge(int actorAge) {
-        this.actorAge = actorAge;
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public String getActorCountry() {
@@ -65,7 +68,5 @@ public class Actor implements Serializable {
     public void setActorCountry(String actorCountry) {
         this.actorCountry = actorCountry;
     }
-    
-    
-    
+
 }
