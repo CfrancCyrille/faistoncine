@@ -24,6 +24,7 @@ public class ApplicationTests {
     @Autowired
     private MockMvc mockMvc;
 
+    //
     @Test
     public void loginWithValidUserThenAuthenticated() throws Exception {
         FormLoginRequestBuilder login = formLogin()
