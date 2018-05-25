@@ -26,7 +26,7 @@
 								<td th:text="${music.interpreter}"></td>
 								<td>
 								<a th:href="@{/music/{id}(id=${music.id})}">view</a>
-								<a th:href="@{/music/delete/(id=${music.id})}">delete</a>
+								<a th:href="@{/music/delete/{id}(id=${music.id})}">delete</a>
 								</td>
 							</tr>
 						</tbody>
