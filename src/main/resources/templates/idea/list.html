@@ -6,7 +6,23 @@
 </head>
 
 <body>
-
+	<table class="table table-striped table-hover">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="idea : ${ideaList}">
+				<td th:text="${idea.name}"></td>
+				<td th:text="${idea.description"></td>
+				<td><a th:href="@{/idea/{id}(id=${idea.id})}">view</a></td>
+			</tr>	
+		</tbody>
+	</table>
+	<button type="button" class="btn-link">Edit</button>
+	<button type="button" class="btn-link">Delete</button>
 
 </body>
 </html>
