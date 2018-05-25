@@ -5,7 +5,7 @@
 <script src="/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<title>Liste des scenarii</title>
+	<title>Liste des acteurs</title>
 	<div class="container">
 		<div class="page-header" id="banner">
 			<div class="row">
@@ -20,10 +20,10 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="scenario : ${scenarioList}">
-								<td th:text="${scenario.name}"></td>
-								<td th:text="${scenario.description}"></td>
-								<td><a th:href="@{/scenarii/{id}(id=${scenario.id})}">view</a>
+							<tr th:each="acteurs : ${actorList}">
+								<td th:text="${actor.name}"></td>
+								<td th:text="${actor.surname}"></td>
+								<td><a th:href="@{/actor/{id}(id=${actor.id})}">view</a>
 								</td>
 							</tr>
 						</tbody>
@@ -34,8 +34,8 @@
  		<div class="row">
 			<div class="col-lg-6 col-md-7 col-sm-6">
 				<h1>Add a scenario</h1>
-				<form th:action="@{/scenarii/add}"
-					method="post" enctype="multipart/form-data" th:object="${scenarioForm}">
+				<form th:action="@{/actor/add}"
+					method="post" enctype="multipart/form-data" th:object="${actorForm}">
 					<fieldset class="form-group">
 						<div class="form-group" th:class="${#fields.hasErrors('name')}? has-error">
 							<label class="col-lg-3 control-label">Name</label>
@@ -44,12 +44,12 @@
 							</div>
 							<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" th:errorclass="fieldError">Name error</span>
 						</div>
-						<div class="form-group" th:class="${#fields.hasErrors('description')}? has-error">
-							<label class="col-lg-3 control-label">Description</label>
+						<div class="form-group" th:class="${#fields.hasErrors('surname')}? has-error">
+							<label class="col-lg-3 control-label">Surname</label>
 							<div class="col-lg-9">
-								<input class="form-control" th:field="*{description}" />
+								<input class="form-control" th:field="*{surname}" />
 							</div>
-							<span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" th:errorclass="fieldError">Description error</span>
+							<span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" th:errorclass="fieldError">Description error</span>
 						</div>
 					</fieldset>
 					<input class="btn btn-primary" type="submit" value="Create scenario" name="button" />

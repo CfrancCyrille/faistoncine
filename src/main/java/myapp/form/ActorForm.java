@@ -21,43 +21,43 @@ public class ActorForm {
     String actorCountry; 
 
 
-     public long getIdActor() {
+     public long getId() {
         return id;
     }
 
-    public void setIdActor(long idActor) {
+    public void setId(long idActor) {
         this.id = idActor;
     }
 
-    public String getActorName() {
+    public String getName() {
         return name;
     }
 
-    public void setActorName(String actorName) {
+    public void setName(String actorName) {
         this.name = actorName;
     }
 
-    public String getActorSurname() {
+    public String getSurname() {
         return surname;
     }
 
-    public void setActorSurname(String actorSurname) {
+    public void setSurname(String actorSurname) {
         this.surname = actorSurname;
     }
 
-    public int getActorAge() {
+    public int getAge() {
         return actorAge;
     }
 
-    public void setActorAge(int actorAge) {
+    public void setAge(int actorAge) {
         this.actorAge = actorAge;
     }
 
-    public String getActorCountry() {
+    public String getCountry() {
         return actorCountry;
     }
 
-    public void setActorCountry(String actorCountry) {
+    public void setCountry(String actorCountry) {
         this.actorCountry = actorCountry;
     }
 }
