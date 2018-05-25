@@ -83,4 +83,5 @@ public class IdeaController {
 		return "idea/show";
 	}
 
+
 }

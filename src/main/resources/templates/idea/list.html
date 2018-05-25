@@ -2,15 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" 
 xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
-<head>
-<!-- th:replace="fragments/header ::head" -->
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<link rel="stylesheet" href="/css/bootstrap.min.css">
-<script src="/js/bootstrap.min.js"></script>
-</head>
+ <head th:replace="fragments/header::head"></head>
 
 <body>
+<div th:replace="fragments/menu :: navbar"></div>
 	<table class="table table-striped table-hover">
 		<thead>
 			<tr>
@@ -32,6 +27,6 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 	</table>
 
 	<a th:href="@{/idea/add}" type="button" class="btn-link">New idea</a>
-	<!-- <div th:replace="fragments/footer ::footer"/> -->	
+	<div th:replace="fragments/footer :: footer"></div>
 </body>
 </html> 
