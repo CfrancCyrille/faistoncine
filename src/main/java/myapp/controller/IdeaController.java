@@ -52,8 +52,7 @@ public class IdeaController {
 	@GetMapping(path= {"/idea/delete/{id}"})
 	public String delete( Model model, @PathVariable Long id)	{
 		ideaRepository.deleteById(id);
-		 model.addAttribute("idea", ideaRepository.findById(id));
-		return "idea/list";
+		return "redirect:/idea/list";
 	}
 	
 	
@@ -74,7 +73,7 @@ public class IdeaController {
 			i.setName(idea.getName());
 			i.setDescription(idea.getDescription());
 			ideaRepository.save(i);
-			return "redirect:/idea";
+			return "redirect:/idea/list";
 		}
 	}
 	
