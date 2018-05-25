@@ -40,14 +40,15 @@ public class MusicController {
 	            return "music/show";
 	        }
 			else {
-	      
-	      Music m = (musicRepository.findById(music.getId())).get();
-	      
+			// Retreive music m in repository
+				Music m = (musicRepository.findById(music.getId())).get();
+			// Update music m:   
 				m.setTitle(music.getTitle());
 				m.setAuthor(music.getAuthor());
 				m.setInterpreter(music.getInterpreter());
+			// Save music edited:
 				musicRepository.save(m);
-	      
+			// Return to the list of music
 	      return "redirect:/music";
 			}
 	}
@@ -60,17 +61,34 @@ public class MusicController {
 	            return "music/list";
 	        }
 			else {
-	      
+			// Create a new music with automatic id generated
 				Music m = new Music();
-	      
+			// Update scenario s:
 				m.setTitle(music.getTitle());
 				m.setAuthor(music.getAuthor());
 				m.setInterpreter(music.getInterpreter());
-	      
+			// Save music edited:
 				musicRepository.save(m);
-		      // Return to the list of music
+		    // Return to the list of music
 		      return "redirect:/music";
 			}
 	}
+	
+	@PostMapping("/music/delete")
+	public String musicsDelete(
+				@Valid Music music,
+				BindingResult result) {
+			if (result.hasErrors()) {
+	            return "music/delete";
+	        }
+			else {
+				// Retreive music m in repository
+				Music m = (musicRepository.findById(music.getId())).get();
+				// Delete music edited:
+				musicRepository.delete(m);
+				return "redirect:/music";
+			}
+		}
+	
 	
 }
