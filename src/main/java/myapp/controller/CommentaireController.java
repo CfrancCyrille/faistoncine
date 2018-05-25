@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import myapp.form.CommentaireForm;
@@ -21,8 +22,15 @@ public class CommentaireController {
 	
 	@GetMapping("/commentaire")
 	public String show(Model model) {
-			model.addAttribute("commentaireForm", new CommentaireForm());
-			return "commentaire/add";
+		model.addAttribute("commentaireList", commentaireRepository.findAll());
+		model.addAttribute("commentaireForm", new CommentaireForm());
+		return "commentaire/add";
+	}
+	
+	@GetMapping("/commentaire/{id}")
+	public String show(Model model, @PathVariable Long id) {
+			model.addAttribute("comments", commentaireRepository.findById(id));
+			return "commentaire/show";
 	}
 	
 	@PostMapping("/commentaire/creation")
