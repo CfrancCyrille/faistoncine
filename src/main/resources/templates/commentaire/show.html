@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	crossorigin="anonymous"></script>
+<title>Editing comment</title>
+</head>
+<body>
+	<div class="row">
+		<div class="col-lg-8 col-md-7 col-sm-6">
+			<h1>Comment</h1>
+			<form th:action="@{/commentaire/edit}" method="post"
+				enctype="multipart/form-data" th:object="${commentaire}">
+				<fieldset class="form-group">
+					<input hidden="true" th:field="*{id}" />
+					<div class="form-group">
+						<label class="col-lg-2 control-label">Author</label>
+						<div class="col-lg-6">
+							<input class="form-control" th:field="*{auteur}" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-lg-2 control-label">Title</label>
+						<div class="col-lg-6">
+							<input class="form-control" th:field="*{titre}" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-lg-3 control-label">Comment</label>
+						<div class="col-lg-6">
+							<textarea class="form-control" rows="5" th:field="*{comment}"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-lg-3 control-label">For</label>
+						<div class="col-lg-9">
+							<select class="form-control" th:field="*{sur}">
+								<option value="Idee">Idee</option>
+								<option value="Personna">Personna</option>
+								<option value="Decor">Decor</option>
+								<option value="Scenarii">Scenarii</option>
+								<option value="Scene">Scene</option>
+								<option value="Musique">Musique</option>
+							</select>
+						</div>
+					</div>
+				</fieldset>
+				<input class="btn btn-primary" type="submit" value="Edit"
+					name="button" />
+
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>
