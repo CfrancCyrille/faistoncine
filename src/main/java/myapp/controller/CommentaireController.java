@@ -33,6 +33,15 @@ public class CommentaireController {
 			return "commentaire/show";
 	}
 	
+	@PostMapping("/commentaire/delete")
+	public String delete(Long id) {
+	      // Retreive scenario s in repository
+	      Commentaire c = (commentaireRepository.findById(id)).get();
+		  commentaireRepository.delete(c);
+	      // Return to the list of comments
+	      return "redirect:/commentaire";
+	}
+	
 	@PostMapping("/commentaire/creation")
 	public String scenariosAdd(
 				@Valid Commentaire commentaire,
@@ -46,12 +55,34 @@ public class CommentaireController {
 	      // Update scenario s:
 				c.setAuteur(commentaire.getAuteur());
 				c.setTitre(commentaire.getTitre());
-				c.setCommentaire(commentaire.getCommentaire());
 				c.setSur(commentaire.getSur());
+				c.setComment(commentaire.getComment());
 	      // Save scenario edited:
 				commentaireRepository.save(c);
 		      // Return to the list of commentary
 		      return "redirect:/commentaire";//TODO : create action
+			}
+	}
+	@PostMapping("/commentaire/edit")
+	public String edit(
+				@Valid Commentaire commentaire,
+				BindingResult result) {
+			if (result.hasErrors()) {
+	            return "commentaire/show";
+	        }
+			else {
+	      // Retreive commentaire s in repository
+	      Commentaire c = (commentaireRepository.findById(commentaire.getId())).get();
+	      // Update commentaire c:
+	      		c.setAuteur(commentaire.getAuteur());
+	      		c.setTitre(commentaire.getTitre());
+	      		c.setComment(commentaire.getComment());
+	      		c.setSur(commentaire.getSur());
+			
+	      // Save commentaire edited:
+				commentaireRepository.save(c);
+	      // Return to the list of scenarii
+	      return "redirect:/commentaire";
 			}
 	}
 	

@@ -48,9 +48,13 @@
 						</div>
 					</div>
 				</fieldset>
-				<input class="btn btn-primary" type="submit" value="Edit" name="button" />
-			    <button type="button" class="btn btn-warning" th:action="@{/commentaire/delete>Delete</button>
+				<input class="btn btn-primary" type="submit" value="Edit"
+					name="button" />
 			</form>
+			<form method="POST" th:action="@{/commentaire/delete}">
+                    <input type="hidden" name="id" th:value="${commentaire.id}" /> <input
+                        class="btn btn-primary" type="submit" value="X" />
+                </form>
 		</div>
 	</div>
 
