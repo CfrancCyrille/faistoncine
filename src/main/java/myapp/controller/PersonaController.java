@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import myapp.form.PersonaForm;
 import myapp.model.Persona;
+import myapp.model.Scenario;
 import myapp.repository.PersonaRepository;
 
 @Controller
@@ -38,12 +39,6 @@ public class PersonaController {
 		return "persona/add";
 	}
 	
-	@GetMapping("persona/{id}")
-	public String show(Model model, @PathVariable Long id) {
-		model.addAttribute("persona", personaRepository.findById(id));
-		return "persona/show";
-	}
-	
 	@PostMapping("/persona/add")
 	public String scenariosAdd(
 				@Valid Persona persona,
@@ -65,4 +60,13 @@ public class PersonaController {
 		      return "redirect:/persona";
 			}
 	}
+			
+	@PostMapping("/persona/del")
+	public String del(@Valid Persona persona,
+			BindingResult result){
+		Persona p = personaRepository.findById(persona.getId()).get();
+		personaRepository.delete(p);
+		return "redirect:/persona/list";
+	}
+	
 }
