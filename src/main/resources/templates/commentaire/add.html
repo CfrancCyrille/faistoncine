@@ -29,12 +29,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="scenario : ${commentaireList}">
+                            <tr th:each="commentaire : ${commentaireList}">
                                 <td th:text="${commentaire.auteur}"></td>
                                 <td th:text="${commentaire.titre}"></td>
                                 <td th:text="${commentaire.commentaire}"></td>
                                 <td th:text="${commentaire.sur}"></td>
-                                <td><a th:href="@{/scenarii/{id}(id=${scenario.id})}">view</a></td>
+                                <td><a th:href="@{/commentaire/{id}(id=${commentaire.id})}">view</a></td>
                             </tr>
                         </tbody>
                     </table>
