@@ -21,6 +21,13 @@ public class UserController {
 		return "user/listUser";
 	}
 
+	@GetMapping("/users/delete/{id}")
+	public String delete(Model model, @PathVariable Long id) {
+		User userToDelete = (userRepository.findById(id)).get();
+		userRepository.delete(userToDelete);
+		return "user/listUser";
+	}
+
 	@PostMapping("/users/edit")
 	public String Useredit(@Valid User user, BindingResult result) {
 		if (result.hasErrors()) {
@@ -35,12 +42,5 @@ public class UserController {
 			userRepository.save(s);
 			return "user/listUser";
 		}
-	}
-
-	@GetMapping("/users/delete/{id}")
-	public String delete(Model model, @PathVariable Long id) {
-		User userToDelete = (userRepository.findById(id)).get();
-		userRepository.delete(userToDelete);
-		return "user/listUser";
 	}
 }
