@@ -20,7 +20,7 @@ public class ScenariiController {
 	@Autowired
 	ScenarioRepository scenarioRepository;
 	
-	@GetMapping()
+	@GetMapping("/scenarii/list")
 	public String list(Model model) {
 		model.addAttribute("scenarioList", scenarioRepository.findAll());
 		model.addAttribute("scenarioForm", new ScenarioForm());
