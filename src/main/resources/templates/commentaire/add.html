@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="fragments/header::head">
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <script src="/js/bootstrap.min.js"></script>
 <link rel="stylesheet"
@@ -97,4 +97,5 @@
 		</div>
 	</div>	
 </body>
+<div th:replace="fragments/footer::footer"></div>
 </html>

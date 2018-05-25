@@ -20,7 +20,7 @@ public class CommentaireController {
 	@Autowired
 	CommentaireRepository commentaireRepository;
 	
-	@GetMapping("/commentaire")
+	@GetMapping("/comment/list")
 	public String show(Model model) {
 		model.addAttribute("commentaireList", commentaireRepository.findAll());
 		model.addAttribute("commentaireForm", new CommentaireForm());
@@ -39,7 +39,7 @@ public class CommentaireController {
 	      Commentaire c = (commentaireRepository.findById(id)).get();
 		  commentaireRepository.delete(c);
 	      // Return to the list of comments
-	      return "redirect:/commentaire";
+	      return "redirect:/comment/list";
 	}
 	
 	@PostMapping("/commentaire/creation")
@@ -47,7 +47,7 @@ public class CommentaireController {
 				@Valid Commentaire commentaire,
 				BindingResult result) {
 			if (result.hasErrors()) {
-	            return "commentaire/list";//TODO : create action for listing commentary
+	            return "comment/list";
 	        }
 			else {
 	      // Create a new scenario with automatic id generated
@@ -60,7 +60,7 @@ public class CommentaireController {
 	      // Save scenario edited:
 				commentaireRepository.save(c);
 		      // Return to the list of commentary
-		      return "redirect:/commentaire";//TODO : create action
+		      return "redirect:/comment/list";
 			}
 	}
 	@PostMapping("/commentaire/edit")
@@ -71,18 +71,13 @@ public class CommentaireController {
 	            return "commentaire/show";
 	        }
 			else {
-	      // Retreive commentaire s in repository
 	      Commentaire c = (commentaireRepository.findById(commentaire.getId())).get();
-	      // Update commentaire c:
 	      		c.setAuteur(commentaire.getAuteur());
 	      		c.setTitre(commentaire.getTitre());
 	      		c.setComment(commentaire.getComment());
 	      		c.setSur(commentaire.getSur());
-			
-	      // Save commentaire edited:
 				commentaireRepository.save(c);
-	      // Return to the list of scenarii
-	      return "redirect:/commentaire";
+	      return "redirect:/comment/list";
 			}
 	}
 	
